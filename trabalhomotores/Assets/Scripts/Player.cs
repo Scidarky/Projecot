@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundheck;
+    [SerializeField] private LayerMask groundLayer;
 
-    // Update is called once per frame
+    public float jump = 15f;
+    public float speed = 5f;
+
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.J) && isGrounded()){
+            rb.velocity = new Vector2(rb.velocity.y, jump);
+        }
+
+        if (Input.GetKeyUp(KeyCode.J) && rb.velocity.y > 0f){
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+            float hori = Input.GetAxis("Horizontal") * speed;
+            hori *= Time.deltaTime;
+            transform.Translate(hori, 0 ,0);
+    }
+
+    private bool isGrounded(){
+        return Physics2D.OverlapCircle(groundheck.position, 0.2f, groundLayer);
     }
 }
