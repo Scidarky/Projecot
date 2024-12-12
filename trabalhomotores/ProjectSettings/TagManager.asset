@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Escada
+  - wait!
+  - jump!
   layers:
   - Default
   - TransparentFX
