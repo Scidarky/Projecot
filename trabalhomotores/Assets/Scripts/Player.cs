@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
             }
 
             if (ded == true){
-                Invoke("DeathAnimation", 1f);
+                Invoke("DeathAnimation", 0.5f);
             }
     }
 
@@ -84,5 +84,6 @@ public class Player : MonoBehaviour
 
    void DeathAnimation(){
     rb.velocity = new Vector2(rb.velocity.y, 5f);
+    
    }  
 }
