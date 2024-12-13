@@ -28,7 +28,7 @@ public class inimigo : MonoBehaviour
         }
 
         if(col.gameObject.tag == "jump!") {
-            rb.velocity = new Vector2(rb.velocity.x, 5f);
+            rb.AddForce(transform.up);
             inside2 = true;
         }
     }
